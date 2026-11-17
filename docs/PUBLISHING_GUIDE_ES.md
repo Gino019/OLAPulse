@@ -24,11 +24,11 @@ npm run dev
 
 1. En GitHub, crea un repositorio **público** llamado exactamente `OLAPulse`.
 2. Si usas el ZIP con historial Git, extráelo con sus carpetas ocultas `.git`.
-3. En la terminal situada dentro de OLAPulse ejecuta lo siguiente, sustituyendo `TU_USUARIO`:
+3. En la terminal situada dentro de OLAPulse ejecuta lo siguiente, sustituyendo `Gino019`:
 
 ```powershell
 git log --oneline -5
-git remote add origin https://github.com/TU_USUARIO/OLAPulse.git
+git remote add origin https://github.com/Gino019/OLAPulse.git
 git branch -M main
 git push -u origin main
 ```
@@ -40,7 +40,7 @@ git init
 git add .
 git commit -m "feat: add DuckDB-Wasm OLAP dashboard"
 git branch -M main
-git remote add origin https://github.com/TU_USUARIO/OLAPulse.git
+git remote add origin https://github.com/Gino019/OLAPulse.git
 git push -u origin main
 ```
 
@@ -60,7 +60,7 @@ git push -u origin main
 4. Si el workflow no se ejecutó automáticamente, abre el workflow y pulsa **Run workflow** sobre la rama `main`.
 5. Revisa que las etapas `build-test` y `deploy` figuren en verde.
 6. Abre la dirección indicada por GitHub Pages, normalmente:
-   `https://TU_USUARIO.github.io/OLAPulse/`
+   `https://Gino019.github.io/OLAPulse/`
 7. Prueba la dirección en una ventana de incógnito y vuelve a verificar el dashboard y las operaciones OLAP.
 
 **Captura 3:** la ejecución completada con ambas etapas en verde.
@@ -107,8 +107,8 @@ Una vez publicadas las URL reales, sustituye los marcadores del archivo `submiss
 
 ```text
 PROJECT: OLAPulse — Interactive Sales Intelligence
-PUBLIC_GITHUB_REPOSITORY: https://github.com/TU_USUARIO/OLAPulse
-PUBLIC_LIVE_APPLICATION: https://TU_USUARIO.github.io/OLAPulse/
+PUBLIC_GITHUB_REPOSITORY: https://github.com/Gino019/OLAPulse
+PUBLIC_LIVE_APPLICATION: https://Gino019.github.io/OLAPulse/
 PUBLIC_MEDIUM_ARTICLE: https://medium.com/@TU_CUENTA/TU_ARTICULO
 PUBLIC_VIDEO: https://www.youtube.com/watch?v=TU_VIDEO
 ```

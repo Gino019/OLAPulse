@@ -1,15 +1,15 @@
 # OLAPulse — Interactive Sales Intelligence
 
-> **Important:** Replace `YOUR_USERNAME` after publishing. The badge and hosted links are not live until a GitHub repository and deployment exist.
+> **Repository:** [Gino019/OLAPulse](https://github.com/Gino019/OLAPulse). GitHub Pages must be enabled and verified before treating the demo as live.
 
 OLAPulse is a browser-powered OLAP (Online Analytical Processing) dashboard that transforms 4,800 **synthetic** retail transactions into interactive SQL-driven business insights. It runs **DuckDB-Wasm in the browser**, with **Chart.js** visualizations and automated deployment through **GitHub Actions → GitHub Pages**. It uses **no AWS** and no paid backend.
 
-![OLAPulse cover](docs/assets/article-cover.png)
+![OLAPulse cover](docs/assets/article-cover.svg)
 
 ## Public links (complete after deployment)
 
-- **Source code:** `https://github.com/YOUR_USERNAME/OLAPulse`
-- **Live dashboard:** `https://YOUR_USERNAME.github.io/OLAPulse/`
+- **Source code:** `https://github.com/Gino019/OLAPulse`
+- **Live dashboard:** `https://Gino019.github.io/OLAPulse/`
 - **Medium article:** *(publish, then replace)*
 - **YouTube video:** *(publish, then replace)*
 
@@ -26,7 +26,7 @@ OLAPulse is a browser-powered OLAP (Online Analytical Processing) dashboard that
 
 ## Architecture
 
-![Architecture](docs/assets/architecture.png)
+![Architecture](docs/assets/architecture.svg)
 
 ```text
 public/data/sales.csv
@@ -47,7 +47,7 @@ GitHub repository ──push──> GitHub Actions ──test/build/deploy──
 
 ## Run locally
 
-Requirements: **Node.js 22** (or a supported Node.js version >=20.19) and npm.
+Requirements: **Node.js 22** (or a supported Node.js version >=20.19), npm, and **Python 3** (to generate the reproducible synthetic CSV).
 
 ```bash
 npm install
@@ -99,11 +99,11 @@ Use the **OLAP Explorer** in the app to inspect and run all five operations and 
 
 ## Dataset
 
-The public file [`public/data/sales.csv`](public/data/sales.csv) contains **4,800 synthetic orders from 2023 to 2025**, including:
+The generated file `public/data/sales.csv` (created on `npm run dev`, `npm test` and `npm run build`) contains **4,800 synthetic orders from 2023 to 2025**, including:
 
 `order_id`, `order_date`, `region`, `category`, `product`, `channel`, `segment`, `quantity`, `unit_price`, `discount`, `revenue`, `profit`.
 
-Recreate the dataset with `python scripts/generate_data.py`. The generator uses a fixed random seed and does not access real user or customer information.
+The CSV is generated locally and by CI rather than tracked in Git, to keep the repository lightweight. Recreate it with `python scripts/generate_data.py`. The generator uses a fixed random seed and does not access real user or customer information.
 
 ## Publishing with GitHub Actions (no AWS)
 
@@ -111,7 +111,7 @@ Recreate the dataset with `python scripts/generate_data.py`. The generator uses 
 2. Push the source files to the **`main`** branch (see commands below).
 3. Open **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 4. Open **Actions**, inspect the **CI and Deploy (GitHub Pages)** workflow, and confirm the run completed successfully.
-5. Visit `https://YOUR_USERNAME.github.io/OLAPulse/`.
+5. Visit `https://Gino019.github.io/OLAPulse/`.
 6. Repeat: change a source file, commit and push; GitHub Actions will automatically test, build and deploy.
 
 **Note:** The Pages environment may need initial setup or organization/repository permission changes. GitHub Pages availability is subject to GitHub's current account policy.
@@ -123,7 +123,7 @@ If using a different repository name, update the `base` path in `vite.config.js`
 ```bash
 # Create the empty public GitHub repository named OLAPulse first.
 # From the root of this project:
-git remote add origin https://github.com/YOUR_USERNAME/OLAPulse.git
+git remote add origin https://github.com/Gino019/OLAPulse.git
 git branch -M main
 git push -u origin main
 ```
