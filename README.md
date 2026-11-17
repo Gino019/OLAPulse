@@ -128,6 +128,8 @@ git branch -M main
 git push -u origin main
 ```
 
+For Windows users with the official GitHub CLI (`gh`), you can also run `powershell -ExecutionPolicy Bypass -File scripts/publish_to_github.ps1` from the project root; the script authenticates through GitHub and creates/pushes the public repository. Verify all results in GitHub.
+
 Use GitHub authentication when asked. Do not include passwords or access tokens in commits or screenshots.
 
 ## Academic evidence checklist

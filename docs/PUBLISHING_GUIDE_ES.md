@@ -44,6 +44,8 @@ git remote add origin https://github.com/TU_USUARIO/OLAPulse.git
 git push -u origin main
 ```
 
+**Alternativa más rápida con GitHub CLI:** instala `gh` ejecutando `winget install GitHub.cli`; luego, dentro de OLAPulse, ejecuta `powershell -ExecutionPolicy Bypass -File scripts/publish_to_github.ps1`. El script pedirá autenticación mediante el flujo oficial de GitHub, creará `OLAPulse` si no existe y hará push de la rama `main`. Debes revisar el resultado y configurar Pages en el siguiente paso.
+
 **No subas tokens, claves o credenciales.** Para iniciar sesión, usa Git Credential Manager o GitHub Desktop, no pongas el token dentro de una URL compartida.
 
 **Captura 1:** pestaña **Code**, donde se vea el nombre, el repositorio público y los archivos.
