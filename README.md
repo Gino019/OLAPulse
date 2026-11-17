@@ -6,7 +6,7 @@ OLAPulse is a browser-powered OLAP (Online Analytical Processing) dashboard that
 
 ![OLAPulse cover](docs/assets/article-cover.svg)
 
-## Public links (complete after deployment)
+## Public links
 
 - **Source code:** `https://github.com/Gino019/OLAPulse`
 - **Live dashboard:** `https://Gino019.github.io/OLAPulse/`
