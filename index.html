@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f8fd" />
+    <meta name="description" content="OLAPulse is a browser-powered OLAP sales intelligence dashboard built with DuckDB-Wasm and SQL." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>OLAPulse — Sales Intelligence</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <a class="brand" href="#overview" aria-label="OLAPulse home">
+          <span class="brand-symbol">◈</span>
+          <span>OLA<span class="brand-highlight">Pulse</span><small>BUSINESS INTELLIGENCE</small></span>
+        </a>
+        <div class="nav-caption">WORKSPACE</div>
+        <nav class="nav-items">
+          <a class="nav-link active" href="#overview"><span class="nav-icon">▦</span> Overview</a>
+          <a class="nav-link" href="#insights"><span class="nav-icon">◫</span> Analytics</a>
+          <a class="nav-link" href="#explorer"><span class="nav-icon">⌘</span> OLAP Explorer</a>
+          <a class="nav-link" href="#data"><span class="nav-icon">▤</span> Dataset</a>
+        </nav>
+        <div class="side-bottom">
+          <div class="engine-card"><span class="pulse-dot"></span><div><strong>Powered by DuckDB</strong><small>SQL inside your browser</small></div></div>
+          <div class="version-label">OLAPulse v1.0 · Open source</div>
+        </div>
+      </aside>
+
+      <main class="main" id="overview">
+        <header class="topbar">
+          <div class="crumb">WORKSPACE <span>/</span> ANALYTICS OVERVIEW</div>
+          <div class="top-actions"><span class="live-status" id="db-status"><span class="pulse-dot"></span> Connecting engine...</span><a class="small-link" href="#explorer">SQL Explorer ↗</a></div>
+        </header>
+
+        <div class="content">
+          <section class="heading-row">
+            <div><div class="eyebrow"><span class="line"></span> THE DATA, DECODED</div><h1>Sales <em>Intelligence.</em></h1><p class="lede">Turn thousands of transactions into clear, actionable business insights.</p></div>
+            <div class="heading-chip">✦ <span>INTERACTIVE OLAP DASHBOARD</span></div>
+          </section>
+
+          <section class="filters" aria-label="Dashboard filters">
+            <div class="filters-heading"><div><span class="filter-icon">⚑</span><strong>Explore your data</strong><small>Filter your analytical cube</small></div><button type="button" id="reset-filters" class="quiet-button">↺ Reset filters</button></div>
+            <div class="filter-grid">
+              <label>Year <select id="filter-year"><option value="all">All years</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025" selected>2025</option></select></label>
+              <label>Region <select id="filter-region"><option value="all">All regions</option><option>North</option><option>South</option><option>East</option><option>West</option></select></label>
+              <label>Category <select id="filter-category"><option value="all">All categories</option><option>Electronics</option><option>Furniture</option><option>Office Supplies</option><option>Accessories</option></select></label>
+              <label>Sales channel <select id="filter-channel"><option value="all">All channels</option><option>Online</option><option>Retail</option><option>Partner</option></select></label>
+            </div>
+          </section>
+
+          <section class="kpi-grid" aria-label="Key performance indicators">
+            <article class="metric-card"><div class="metric-top"><span>Total Revenue</span><span class="metric-icon violet">↗</span></div><strong id="metric-revenue">—</strong><div class="metric-bottom">Gross sales after discounts <span>USD</span></div></article>
+            <article class="metric-card"><div class="metric-top"><span>Total Profit</span><span class="metric-icon teal">◉</span></div><strong id="metric-profit">—</strong><div class="metric-bottom">Revenue less estimated cost <span>USD</span></div></article>
+            <article class="metric-card"><div class="metric-top"><span>Orders Processed</span><span class="metric-icon blue">▣</span></div><strong id="metric-orders">—</strong><div class="metric-bottom">Completed transactions <span>COUNT</span></div></article>
+            <article class="metric-card"><div class="metric-top"><span>Profit Margin</span><span class="metric-icon orange">◒</span></div><strong id="metric-margin">—</strong><div class="metric-bottom">Profit / Revenue <span>RATE</span></div></article>
+          </section>
+
+          <section class="chart-grid" id="insights">
+            <article class="panel trend-panel"><div class="panel-heading"><div><small>REVENUE PERFORMANCE</small><h2>Revenue over time</h2></div><span class="mini-tag">Monthly trend</span></div><div class="chart-area"><canvas id="chart-trend" aria-label="Revenue over time" role="img"></canvas></div></article>
+            <article class="panel category-panel"><div class="panel-heading"><div><small>PRODUCT MIX</small><h2>Sales by category</h2></div><span class="mini-tag">Share of revenue</span></div><div class="chart-area"><canvas id="chart-category" aria-label="Revenue share by category" role="img"></canvas></div><div id="category-legend" class="legend"></div></article>
+            <article class="panel region-panel"><div class="panel-heading"><div><small>MARKET PERFORMANCE</small><h2>Regional breakdown</h2></div><span class="mini-tag">Revenue by market</span></div><div class="chart-area chart-short"><canvas id="chart-regions" aria-label="Revenue by region" role="img"></canvas></div></article>
+            <article class="panel table-panel"><div class="panel-heading"><div><small>TOP PERFORMERS</small><h2>Best-selling products</h2></div><span class="mini-tag">Top 5</span></div><div class="table-wrap"><table><thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>REVENUE</th></tr></thead><tbody id="top-products"><tr><td colspan="3">Loading data...</td></tr></tbody></table></div></article>
+          </section>
+
+          <section class="explorer-section" id="explorer">
+            <div class="section-heading"><div><div class="eyebrow"><span class="line"></span> EXPLORE THE CUBE</div><h2>OLAP <em>Operations.</em></h2><p>See the actual SQL behind each analytical operation.</p></div><span class="section-number">05 OPERATIONS</span></div>
+            <div class="explorer-panel">
+              <div class="operation-tabs" role="tablist" aria-label="OLAP operation">
+                <button class="operation-tab active" type="button" role="tab" aria-selected="true" data-op="slice">Slice</button>
+                <button class="operation-tab" type="button" role="tab" aria-selected="false" data-op="dice">Dice</button>
+                <button class="operation-tab" type="button" role="tab" aria-selected="false" data-op="drilldown">Drill-down</button>
+                <button class="operation-tab" type="button" role="tab" aria-selected="false" data-op="rollup">Roll-up</button>
+                <button class="operation-tab" type="button" role="tab" aria-selected="false" data-op="pivot">Pivot</button>
+              </div>
+              <div class="explorer-body"><div class="explorer-intro"><div><span class="query-type" id="operation-type">SLICE</span><h3 id="operation-title">Focus on one category</h3><p id="operation-description">Keep one category of the sales cube and compare regions.</p></div><button class="primary-button" type="button" id="run-query">▶ Run query</button></div>
+              <div class="sql-toolbar"><span><span class="code-dot"></span> query.sql <small>DUCKDB SQL</small></span><button class="code-action" id="copy-sql" type="button">⧉ Copy SQL</button></div>
+              <pre class="sql-block"><code id="sql-code">-- Connecting to analytical engine...</code></pre>
+              <div class="result-heading"><strong>Query results</strong><div><span id="result-count">—</span><button type="button" id="download-results" class="quiet-button">↓ Export CSV</button></div></div>
+              <div class="table-wrap result-scroll"><table id="result-table"><thead></thead><tbody></tbody></table></div><p class="execution-note" id="execution-note">SQL executes locally using DuckDB-Wasm.</p></div>
+            </div>
+          </section>
+
+          <section class="dataset-panel" id="data"><div><small>TRANSPARENT BY DESIGN</small><h2>Data you can inspect.</h2><p>A reproducible synthetic retail dataset with 4,800 transactions across three years, four regions, four categories and three sales channels. No personal or customer data is used.</p></div><div><a class="download-button" href="./data/sales.csv" id="dataset-link" download>↓ Download dataset</a><span class="dataset-note">CSV · Synthetic sample · 2023–2025</span></div></section>
+          <footer>OLAPulse — Interactive Sales Intelligence <span>Built with <strong>DuckDB-Wasm</strong> · Deployed with <strong>GitHub Actions</strong></span></footer>
+        </div>
+      </main>
+    </div>
+    <div id="toast" aria-live="polite" role="status"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
