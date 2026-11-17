@@ -6,9 +6,9 @@
 
 **Tags for Medium:** `OLAP` · `DuckDB` · `Business Intelligence` · `SQL` · `GitHub Actions`
 
-**Project repository:** [OLAPulse on GitHub](https://github.com/YOUR_USERNAME/OLAPulse) — **replace `YOUR_USERNAME` with your account before publishing**.
+**Project repository:** [OLAPulse on GitHub](https://github.com/Gino019/OLAPulse) — **public source repository**.
 
-**Live demo:** `https://YOUR_USERNAME.github.io/OLAPulse/` — **replace after a successful deployment**.
+**Live demo:** `https://Gino019.github.io/OLAPulse/` — **replace after a successful deployment**.
 
 ![OLAPulse — Interactive Sales Intelligence](assets/article-cover.png)
 
@@ -109,7 +109,7 @@ SELECT *
 FROM read_csv_auto('olapulse_sales.csv', HEADER = TRUE, SAMPLE_SIZE = -1);
 ```
 
-The complete working implementation is in [`src/database.js`](https://github.com/YOUR_USERNAME/OLAPulse/blob/main/src/database.js).
+The complete working implementation is in [`src/database.js`](https://github.com/Gino019/OLAPulse/blob/main/src/database.js).
 
 ## 7. Building the Sales Dashboard
 
@@ -212,7 +212,7 @@ The repository includes a `.github/workflows/deploy.yml` file. On every push to 
     path: dist/
 ```
 
-A separate job publishes the uploaded artifact with `actions/deploy-pages@v4`. The full workflow is available in the [public repository](https://github.com/YOUR_USERNAME/OLAPulse/blob/main/.github/workflows/deploy.yml).
+A separate job publishes the uploaded artifact with `actions/deploy-pages@v4`. The full workflow is available in the [public repository](https://github.com/Gino019/OLAPulse/blob/main/.github/workflows/deploy.yml).
 
 The initial setup also requires selecting **GitHub Actions** as the publishing source under **Settings → Pages**.
 
@@ -239,9 +239,9 @@ By combining DuckDB-Wasm, Chart.js, Vite, and GitHub Actions, I created **OLAPul
 
 If you want to reproduce the project, review its SQL queries, or adapt it to another dataset, the full source and setup instructions are available below.
 
-**Source code:** [OLAPulse GitHub Repository](https://github.com/YOUR_USERNAME/OLAPulse)
+**Source code:** [OLAPulse GitHub Repository](https://github.com/Gino019/OLAPulse)
 
-**Live demo:** `https://YOUR_USERNAME.github.io/OLAPulse/`
+**Live demo:** `https://Gino019.github.io/OLAPulse/`
 
 **Video walkthrough:** `[ADD YOUR PUBLIC VIDEO LINK AFTER UPLOADING]`
 
@@ -258,7 +258,7 @@ If you want to reproduce the project, review its SQL queries, or adapt it to ano
 
 ### Medium publishing checklist (remove this section before publishing)
 
-- Replace **all** `YOUR_USERNAME`, author, demo, video, and other placeholders with real links.
+- Keep the verified GitHub repository link; replace the author, live demo, video, and remaining unpublished placeholders after verification.
 - Add `docs/assets/article-cover.png` as the Medium cover image.
 - Upload the PNG images `architecture.png` and `olap-operations.png` where their Figure placeholders appear (Medium does not automatically import relative Markdown images from your computer).
 - Capture and upload **real** screenshots of the running dashboard, OLAP Explorer, and green GitHub Actions deployment.
